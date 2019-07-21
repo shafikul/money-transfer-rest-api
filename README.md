@@ -18,12 +18,6 @@ Application will be started in ***http://localhost:8888***
 
 ## API DOCUMENTATION
 
-Go to https://github.com/shafikul/money-transfer-rest-api/wiki/API-Documentation
-
-
-
-## Welcome to the money-transfer-rest-api documentation wiki!
-
 ### 1. Get Account list  
 
 #####  URL: curl -i -X GET http://localhost:8888/api/v1/account/all?limit=1
