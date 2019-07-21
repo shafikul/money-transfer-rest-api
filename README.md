@@ -1,8 +1,5 @@
 # money-transfer-rest-api
 
-[![Build Status](https://travis-ci.org/shafikul/spring-rest-service.svg?branch=master)](https://travis-ci.org/shafikul/spring-rest-service)
-
-
 ## HOW TO RUN 
 
 At first clone this repository https://github.com/shafikul/money-transfer-rest-api.git 
