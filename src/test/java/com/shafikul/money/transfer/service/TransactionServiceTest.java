@@ -6,12 +6,14 @@ import com.shafikul.money.transfer.core.enums.ResponseType;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 
 import java.math.BigDecimal;
 
 public class TransactionServiceTest {
 
+    @InjectMocks
     private TransactionService transactionService = TransactionService.getInstance();
 
     @Before
@@ -45,8 +47,8 @@ public class TransactionServiceTest {
 
     private TransactionBean getMockTransactionObject() {
         TransactionBean transactionBean = new TransactionBean();
-        transactionBean.setToAccount(1);
-        transactionBean.setFromAccount(1);
+        transactionBean.setToAccount(100);
+        transactionBean.setFromAccount(100);
         transactionBean.setMoney(new BigDecimal(10.0));
         return transactionBean;
     }

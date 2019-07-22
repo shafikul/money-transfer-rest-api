@@ -40,7 +40,7 @@ public class AccountRepositoryTest {
             accountRepository.openAccountIfNotExists(getMockAccountObject());
         }
         List<Account> accountList = accountRepository.getAllSortedAccounts(4, 2);
-        Assert.assertEquals(1, accountList.size());
+        Assert.assertEquals(2, accountList.size());
     }
 
     private Account getMockAccountObject() {
