@@ -1,13 +1,13 @@
 package com.shafikul.money.transfer.repository;
 
+import com.shafikul.money.transfer.model.Account;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
-
-import com.shafikul.money.transfer.model.Account;
 
 public enum AccountRepository {
 
@@ -19,7 +19,7 @@ public enum AccountRepository {
 
     public void openAccountIfNotExists(Account account) {
         if (null == account.getId() || account.getId().equals(0)) {
-            account.setId(getNewAccoutId());
+            account.setId(getNewAccountId());
         }
         updateAccount(account);
     }
@@ -33,11 +33,11 @@ public enum AccountRepository {
                 .collect(Collectors.toList());
     }
 
-    public void updateAccount(Account account) {
+    private void updateAccount(Account account) {
         accounts.put(account.getId(), account);
     }
 
-    public Integer getNewAccoutId() {
+    public Integer getNewAccountId() {
         return autoIncrementId.incrementAndGet();
     }
 }
