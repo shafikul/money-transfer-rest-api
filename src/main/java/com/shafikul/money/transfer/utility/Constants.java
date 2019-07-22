@@ -12,9 +12,9 @@ public class Constants {
 	//all end point URL
 	public static String ALL_ACCOUNT_PATH = "/api/v1/account/all";
 	public static String ACCOUNT_DETAILS_PATH = "/api/v1/account";
-	public static String OPENT_ACCOUNT_PATH = "/api/v1/account/create";
+	public static String OPEN_ACCOUNT_PATH = "/api/v1/account/create";
 	public static String TRANSFER_MONEY_PATH = "/api/v1/account/transfer";
-	public static String WITH_DRWA_MONEY_PATH = "/api/v1/account/with-draw";
+	public static String WITH_DRAW_MONEY_PATH = "/api/v1/account/with-draw";
 	public static String DEPOSIT_MONEY_PATH = "/api/v1/account/send";
 	public static String ALL_TRANSATIONS_PATH = "/api/v1/transactions/all";
 	

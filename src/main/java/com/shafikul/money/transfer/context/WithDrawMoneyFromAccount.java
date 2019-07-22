@@ -16,19 +16,19 @@ import com.shafikul.money.transfer.utility.ValidatorUtil;
 import net.freeutils.httpserver.HTTPServer;
 
 public class WithDrawMoneyFromAccount implements HTTPServer.ContextHandler {
-	public int serve(HTTPServer.Request req, HTTPServer.Response resp) throws IOException {
-		DataConversionUtil.setHeader(resp);
-		TransactionBean payload = new Gson().fromJson(DataConversionUtil.streamToString(req.getBody()),
-				TransactionBean.class);
-		BaseResponse baseResponse = null;
-		if (!ValidatorUtil.validate(payload, TransactionType.WITH_DRAW)) {
-			baseResponse = BaseResponse.builder().type(ResponseType.ERROR).status(Status.UNPROCESSED_ENTITY)
-					.message(Messages.INVALID_PAYLOAD).build();
-			resp.send(baseResponse.getStatus(), DataConversionUtil.make().toJson(baseResponse));
-			return 0;
-		}
-		baseResponse = TransactionService.getInstance().withDrawMoneyFromAccount(payload);
-		resp.send(baseResponse.getStatus(), DataConversionUtil.make().toJson(baseResponse));
-		return 0;
-	}
+    public int serve(HTTPServer.Request req, HTTPServer.Response resp) throws IOException {
+        DataConversionUtil.setHeader(resp);
+        TransactionBean payload = new Gson().fromJson(DataConversionUtil.streamToString(req.getBody()),
+                TransactionBean.class);
+        BaseResponse baseResponse;
+        if (!ValidatorUtil.validate(payload, TransactionType.WITH_DRAW)) {
+            baseResponse = BaseResponse.builder().type(ResponseType.ERROR).status(Status.UNPROCESSED_ENTITY)
+                    .message(Messages.INVALID_PAYLOAD).build();
+            resp.send(baseResponse.getStatus(), DataConversionUtil.make().toJson(baseResponse));
+            return 0;
+        }
+        baseResponse = TransactionService.getInstance().withDrawMoneyFromAccount(payload);
+        resp.send(baseResponse.getStatus(), DataConversionUtil.make().toJson(baseResponse));
+        return 0;
+    }
 }

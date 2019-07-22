@@ -13,12 +13,9 @@ import lombok.ToString;
 @ToString
 public class AccountBean {
 
-	@NonNull
-	private String name;
+    private String name;
 
-	@NonNull
-	private BigDecimal primaryBalance;
+    private BigDecimal primaryBalance;
 
-	@NonNull
-	private Date birth;
+    private Date birth;
 }

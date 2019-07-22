@@ -11,10 +11,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class TransactionBean {
-	@NonNull
-	private Integer toAccount;
-	@NonNull
-	private Integer fromAccount;
-	@NonNull
-	private BigDecimal money;
+
+    private Integer toAccount;
+
+    private Integer fromAccount;
+
+    private BigDecimal money;
 }

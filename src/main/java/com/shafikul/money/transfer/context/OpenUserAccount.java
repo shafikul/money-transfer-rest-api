@@ -15,18 +15,18 @@ import com.shafikul.money.transfer.utility.ValidatorUtil;
 import net.freeutils.httpserver.HTTPServer;
 
 public class OpenUserAccount implements HTTPServer.ContextHandler {
-	public int serve(HTTPServer.Request req, HTTPServer.Response resp) throws IOException {
-		DataConversionUtil.setHeader(resp);
-		AccountBean account = new Gson().fromJson(DataConversionUtil.streamToString(req.getBody()), AccountBean.class);
-		BaseResponse baseResponse = null;
-		if (!ValidatorUtil.validate(account)) {
-			baseResponse = BaseResponse.builder().type(ResponseType.ERROR).status(Status.BAD_REQUEST)
-					.message(Messages.INVALID_PAYLOAD).build();
-			resp.send(baseResponse.getStatus(), DataConversionUtil.make().toJson(baseResponse));
-			return 0;
-		}
-		baseResponse = AccountService.getInstance().openAccount(account);
-		resp.send(baseResponse.getStatus(), DataConversionUtil.make().toJson(baseResponse));
-		return 0;
-	}
+    public int serve(HTTPServer.Request req, HTTPServer.Response resp) throws IOException {
+        DataConversionUtil.setHeader(resp);
+        AccountBean account = new Gson().fromJson(DataConversionUtil.streamToString(req.getBody()), AccountBean.class);
+        BaseResponse baseResponse;
+        if (!ValidatorUtil.validate(account)) {
+            baseResponse = BaseResponse.builder().type(ResponseType.ERROR).status(Status.BAD_REQUEST)
+                    .message(Messages.INVALID_PAYLOAD).build();
+            resp.send(baseResponse.getStatus(), DataConversionUtil.make().toJson(baseResponse));
+            return 0;
+        }
+        baseResponse = AccountService.getInstance().openAccount(account);
+        resp.send(baseResponse.getStatus(), DataConversionUtil.make().toJson(baseResponse));
+        return 0;
+    }
 }
