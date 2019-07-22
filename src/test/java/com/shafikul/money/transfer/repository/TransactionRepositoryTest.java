@@ -22,7 +22,7 @@ public class TransactionRepositoryTest {
 
     @Test
     public void testNewTransactionId() {
-        Assert.assertEquals(1, transactionRepository.getNewTransactionId().intValue());
+        Assert.assertTrue(transactionRepository.getNewTransactionId().intValue() > 0);
     }
 
     @Test

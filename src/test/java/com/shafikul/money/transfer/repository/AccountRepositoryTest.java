@@ -25,7 +25,7 @@ public class AccountRepositoryTest {
 
     @Test
     public void testGetNewAccountId() {
-        Assert.assertEquals(1L, accountRepository.getNewAccountId().longValue());
+        Assert.assertTrue(accountRepository.getNewAccountId() > 0);
     }
 
     @Test
