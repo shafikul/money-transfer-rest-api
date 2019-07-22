@@ -1,23 +1,39 @@
 package com.shafikul.money.transfer.model;
 
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
 
 import java.math.BigDecimal;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.junit.MockitoJUnitRunner;
+import static org.junit.Assert.*;
 
-@RunWith(MockitoJUnitRunner.class)
 public class AccountTest {
 
-	@InjectMocks
-	private Account account = new Account();
+    @InjectMocks
+    private Account account = new Account();
 
-	@Test
-	public void accountTest() {
-		assertEquals(BigDecimal.ZERO, account.getBalance());
-	}
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+    }
+
+    @Test
+    public void accountTest() {
+        assertEquals(BigDecimal.ZERO, account.getBalance());
+    }
+
+    @Test
+    public void testWithDrawFromAccount() {
+        account.sendToAccount(new BigDecimal(5.0));
+        assertTrue(account.withDrawFromAccount(new BigDecimal(1.0)));
+        assertFalse(account.withDrawFromAccount(new BigDecimal(10.0)));
+    }
+
+    @Test
+    public void testSendToAccount() {
+        assertTrue(account.sendToAccount(new BigDecimal(1.0)));
+    }
 }

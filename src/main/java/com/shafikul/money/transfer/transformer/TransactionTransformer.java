@@ -21,8 +21,12 @@ public class TransactionTransformer implements Transformer<Transaction, Transact
     public TransactionDto transform(Transaction source) {
         TransactionDto dto = new TransactionDto();
         dto.setAmount(source.getAmount());
-        dto.setFromAccountId(source.getFromAccount().getId());
-        dto.setToAccountId(source.getToAccount().getId());
+        if (null != source.getFromAccount()) {
+            dto.setFromAccountId(source.getFromAccount().getId());
+        }
+        if (null != source.getToAccount()) {
+            dto.setToAccountId(source.getToAccount().getId());
+        }
         dto.setTimestamp(source.getTimestamp());
         dto.setState(source.getState());
         dto.setType(source.getType());

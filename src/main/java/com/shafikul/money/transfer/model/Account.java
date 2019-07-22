@@ -1,5 +1,9 @@
 package com.shafikul.money.transfer.model;
 
+import com.shafikul.money.transfer.utility.Constants;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -7,18 +11,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.shafikul.money.transfer.utility.Constants;
-
-import lombok.Getter;
-import lombok.Setter;
-
 @Getter
-@Setter
 public class Account {
 
-	private Integer id;
+	private @Setter Integer id;
 
-	private String name;
+	private @Setter String name;
 
 	private BigDecimal balance = BigDecimal.ZERO;
 
