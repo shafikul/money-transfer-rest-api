@@ -53,9 +53,9 @@ Application will be started in ***http://localhost:8888***
   }
 ```
 
-### 2. Get account details by id  
+### 2. Get account details with recent transactions by accountId & transaction limit
 
-#####  URL: http://localhost:8888/api/v1/account?id=5
+#####  URL: http://localhost:8888/api/v1/account?id=5&limit=2
 
 #####  Method: GET  
 
@@ -136,6 +136,11 @@ Application will be started in ***http://localhost:8888***
 ##### Error Response:
 
 ```json
+{
+    "type": "ERROR",
+    "status": 400,
+    "message": "Invalid Payload"
+}
  
 ```
 

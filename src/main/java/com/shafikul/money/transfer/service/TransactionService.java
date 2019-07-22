@@ -36,14 +36,14 @@ public class TransactionService {
 
 	public BaseResponse getAllTransactions(Integer start, Integer limit) {
 		List<Transaction> list = TransactionRepository.INSTANCE.getAllSortedTransactions(start, limit);
-		List<TransactionDto> transactionlist = list.stream().map(source -> transactionTransformer.transform(source))
+		List<TransactionDto> transactionList = list.stream().map(source -> transactionTransformer.transform(source))
 				.collect(Collectors.toList());
-		return BaseResponse.builder().type(ResponseType.SUCCESS).status(200).result(transactionlist)
+		return BaseResponse.builder().type(ResponseType.SUCCESS).status(200).result(transactionList)
 				.message(ResponseType.SUCCESS.name()).build();
 	}
 
 	public Transaction getTransactionDetailsById(Long transactionId) {
-		return TransactionRepository.INSTANCE.getTransactioById(transactionId);
+		return TransactionRepository.INSTANCE.getTransactionById(transactionId);
 	}
 
 	public BaseResponse transferMoneyFromAccountToAccount(TransactionBean bean) {

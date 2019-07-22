@@ -48,7 +48,7 @@ public class ValidatorUtil {
     }
 
     public static Boolean validatePrimaryBalanceNonNegative(BigDecimal amount) {
-        return amount.compareTo(BigDecimal.ZERO) == -1;
+        return amount.compareTo(BigDecimal.ZERO) < 0;
     }
 
     public static boolean validate(AccountBean account) {
@@ -67,15 +67,9 @@ public class ValidatorUtil {
     public static Integer checkOrGetDefaultStartParams(HTTPServer.Request request) {
         Integer start;
         try {
-            if (request.getParams().containsKey("start")) {
-                try {
-                    start = Integer.parseInt(request.getParams().get("start"));
-                    if (start >= 0) {
-                        return start;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            start = Integer.parseInt(request.getParams().getOrDefault("start", "-1"));
+            if (start >= 0) {
+                return start;
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -86,15 +80,9 @@ public class ValidatorUtil {
     public static Integer checkOrGetDefaultLimitParams(HTTPServer.Request request) {
         Integer limit;
         try {
-            if (request.getParams().containsKey("limit")) {
-                try {
-                    limit = Integer.parseInt(request.getParams().get("limit"));
-                    if (limit > 0) {
-                        return limit;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            limit = Integer.parseInt(request.getParams().getOrDefault("limit", "0"));
+            if (limit > 0) {
+                return limit;
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -105,17 +93,12 @@ public class ValidatorUtil {
     public static Integer validateAndGetIDParams(HTTPServer.Request request) {
         int id = Constants.INVALID_ID;
         try {
-            if (request.getParams().containsKey("id")) {
-                try {
-                    id = Integer.parseInt(request.getParams().get("id"));
-                    if (id > 0) {
-                        return id;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            id = Integer.parseInt(request.getParams().getOrDefault("id", "-1"));
+            if (id > 0) {
+                return id;
             }
-        } catch (IOException e) {
+        } catch (
+                IOException e) {
             e.printStackTrace();
         }
         return id;

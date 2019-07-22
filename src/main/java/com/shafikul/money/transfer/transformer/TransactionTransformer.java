@@ -30,8 +30,7 @@ public class TransactionTransformer implements Transformer<Transaction, Transact
     }
 
     @Override
-    public Transaction transformBack(TransactionDto target) {
-        return null;
+    public Transaction transformBack(TransactionDto target) throws UnsupportedOperationException {
+        throw new UnsupportedOperationException();
     }
-
 }

@@ -39,8 +39,8 @@ public class AccountTransformer implements Transformer<Account, AccountDto> {
     }
 
     @Override
-    public Account transformBack(AccountDto target) {
-        return null;
+    public Account transformBack(AccountDto target) throws UnsupportedOperationException {
+        throw new UnsupportedOperationException();
     }
 
     private List<TransactionDto> getAccountRelatedTransactions(Account account, Integer limit) {

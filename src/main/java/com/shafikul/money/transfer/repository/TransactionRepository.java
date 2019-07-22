@@ -17,7 +17,7 @@ public enum TransactionRepository {
 
     private Map<Long, Transaction> transactions = new ConcurrentHashMap<Long, Transaction>();
 
-    public Transaction getTransactioById(Long transactionId) {
+    public Transaction getTransactionById(Long transactionId) {
         return this.transactions.get(transactionId);
     }
 
