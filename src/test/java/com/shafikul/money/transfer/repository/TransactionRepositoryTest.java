@@ -18,11 +18,14 @@ public class TransactionRepositoryTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
+        transactionRepository.getAllTransactions().clear();
     }
 
     @Test
     public void testNewTransactionId() {
         Assert.assertTrue(transactionRepository.getNewTransactionId().intValue() > 0);
+        long lastUpdatedId = transactionRepository.getNewTransactionId();
+        Assert.assertEquals(lastUpdatedId + 1, transactionRepository.getNewTransactionId().longValue());
     }
 
     @Test
@@ -39,7 +42,7 @@ public class TransactionRepositoryTest {
             transaction.setTransactionId(i);
             transactionRepository.getAllTransactions().put(transaction.getTransactionId(), transaction);
         }
-        Assert.assertTrue(transactionRepository.getAllTransactions().size() == 5);
+        Assert.assertTrue(transactionRepository.getAllTransactions().size() >= 5);
     }
 
     @Test
