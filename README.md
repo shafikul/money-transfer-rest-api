@@ -20,7 +20,7 @@ Application will be started in ***http://localhost:8888***
 
 ### 1. Get Account list  
 
-#####  URL: curl -i -X GET http://localhost:8888/api/v1/account/all?limit=1
+#####  URL: http://localhost:8888/api/v1/account/all?limit=1
 
 #####  Method: GET  
 
@@ -108,9 +108,13 @@ Application will be started in ***http://localhost:8888***
 
 #####  URL: http://localhost:8888/api/v1/account/create
 
-##### curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "sagar", "primaryBalance": 10.0, "birth": "1992-01-14"}' http://localhost:8888/api/v1/account/create
+#####  Method: POST
+##### CURL:
 
-#####  Method: POST  
+```curl
+  curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "sagar", "primaryBalance": 10.0, "birth": "1992-01-14"}' http://localhost:8888/api/v1/account/create
+```
+
 
 ##### Request Body:
 
@@ -147,16 +151,21 @@ Application will be started in ***http://localhost:8888***
 ### 4. Transfer money from one account to another 
 
 #####  URL: http://localhost:8888/api/v1/account/transfer
-
-##### curl -i -X POST -H 'Content-Type: application/json'  -d '{"toAccount": 1, "fromAccount": 2, "money": 1}' http://localhost:8888/api/v1/account/transfer   
-
+ 
 #####  Method: POST  
 
+##### CURL:
+
+```curl
+ curl -i -X POST -H 'Content-Type: application/json'  -d '{"toAccount": 1, "fromAccount": 2, "money": 1}' http://localhost:8888/api/v1/account/transfer   
+
+```
 ##### Request Body:
 
 ```json
   {"toAccount": 1, "fromAccount": 2, "money": 1}
 ```
+##### Note: For transfer toAccount and fromAccount must be different
 
 ##### Success Response:
 
@@ -190,15 +199,19 @@ Application will be started in ***http://localhost:8888***
 
 #####  URL: http://localhost:8888/api/v1/account/send
 
-##### curl -i -X POST -H 'Content-Type: application/json'  -d '{"toAccount": 1, "fromAccount": 1, "money": 10.12} http://localhost:8888/api/v1/account/send   
+#####  Method: POST 
 
-#####  Method: POST  
+##### CURL: 
+```curl
+  curl -i -X POST -H 'Content-Type: application/json'  -d '{"toAccount": 1, "fromAccount": 1, "money": 10.12} http://localhost:8888/api/v1/account/send   
+``` 
 
 ##### Request Body:
 
 ```json
   {"toAccount": 1, "fromAccount": 1, "money": 10.12}
 ```
+##### Note: For deposit toAccount and fromAccount must be same
 
 ##### Success Response:
 
@@ -243,15 +256,20 @@ Application will be started in ***http://localhost:8888***
 
 #####  URL: http://localhost:8888/api/v1/account/with-draw 
 
-##### curl -i -X POST -H 'Content-Type: application/json'  -d '{"toAccount": 1, "fromAccount": 1, "money": 10.12}' http://localhost:8888/api/v1/account/with-draw   
-
 #####  Method: POST 
+
+##### CURL:
+
+```curl
+  curl -i -X POST -H 'Content-Type: application/json'  -d '{"toAccount": 1, "fromAccount": 1, "money": 10.12}' http://localhost:8888/api/v1/account/with-draw   
+```
 
 ##### Request Body:
 
 ```json
   {"toAccount": 1, "fromAccount": 1, "money": 10.12}
 ``` 
+##### Note: For withdraw toAccount and fromAccount must be same
 
 ##### Success Response:
 
@@ -292,7 +310,7 @@ Application will be started in ***http://localhost:8888***
 
 #####  URL: http://localhost:8888/api/v1/transactions/all?limit=3 
 
-##### curl -i -X GET http://localhost:8888/api/v1/transactions/all  
+##### CURL: curl -i -X GET http://localhost:8888/api/v1/transactions/all  
 
 #####  Method: GET 
 
